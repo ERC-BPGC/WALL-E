@@ -1,0 +1,30 @@
+#include <Servo.h>
+
+Servo servoMotor1;
+Servo servoMotor2;
+
+const int servoPin1 = 9; 
+const int servoPin2 = 10; 
+void setup() {
+  // put your setup code here, to run once:
+servoMotor1.attach(servoPin1);
+servoMotor2.attach(servoPin2);
+
+servoMotor1.write(0);
+servoMotor2.write(0);
+}
+
+void loop() {
+
+  sweep2ServosForward(servoMotor1,0,180,servoMotor2,0,90);
+}
+
+void sweep2ServosForward(Servo servo1, int starter1, int ender1, Servo servo2, int starter2, int ender2){
+  for (int angle1 = starter1, int angle2 = starter2; angle1 <= ender1 || angle2 <= ender2; angle1 += 5, angle2 += 5){
+    if (angle1<=ender1)
+    servo1.write(angle1);
+    if (angle2<=ender2)
+    servo2.write(angle2);
+    delay(15);
+  }
+}
