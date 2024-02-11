@@ -1,3 +1,4 @@
+//Aadit is the dumbest person that wall e has ever met
 #include <Servo.h>
 int dir2_left=2;
 int dir1_left=7;
