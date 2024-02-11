@@ -132,9 +132,9 @@ void sweep4ServosBackward(Servo servo1, int starter1, int ender1, Servo servo2, 
     if (angle2 >= ender2)
       servo2.write(angle2);
     if (angle3 >= ender3)
-      servo2.write(angle3);
+      servo3.write(angle3);
     if (angle4 >= ender4)
-      servo2.write(angle4);
+      servo4.write(angle4);
     delay(15);
   }
 }
@@ -148,9 +148,9 @@ void sweep4ServosForward(Servo servo1, int starter1, int ender1, Servo servo2, i
     if (angle2 <= ender2)
       servo2.write(angle2);
     if (angle3 <= ender3)
-      servo2.write(angle3);
+      servo3.write(angle3);
     if (angle4 <= ender4)
-      servo2.write(angle4);
+      servo4.write(angle4);
     delay(15);
   }
 }
