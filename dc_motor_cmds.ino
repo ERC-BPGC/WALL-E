@@ -104,7 +104,21 @@ void sweep4ServosForward(Servo servo1, int starter1, int ender1, Servo servo2, i
   }
 }
 
-
+void sweep4ServosBackward(Servo servo1, int starter1, int ender1, Servo servo2, int starter2, int ender2, Servo servo3, int starter3, int ender3, Servo servo4, int starter4, int ender4)
+{
+  for (int angle1 = starter1, angle2 = starter2, angle3 = starter3, angle4 = starter4; angle1 >= ender1 || angle2 >= ender2 || angle3 >= ender3 || angle4 >= ender4; angle1 -= 5, angle2 -= 5, angle3 -= 5 , angle4 -= 5)
+  {
+    if (angle1 >= ender1)
+      servo1.write(angle1);
+    if (angle2 >= ender2)
+      servo2.write(angle2);
+    if (angle3 >= ender3)
+      servo2.write(angle3);
+    if (angle4 >= ender4)
+      servo2.write(angle4);
+    delay(15);
+  }
+}
 
 
 
