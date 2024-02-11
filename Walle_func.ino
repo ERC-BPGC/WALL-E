@@ -99,7 +99,7 @@ void servoNeckBottomUp{
   posNeckBottom = posNeckBottom+5;
   pinServoNeckBottom.write(posNeckBottom);
 }
-void servoBottomDown{
+void servoNeckBottomDown{
   posNeckBottom = posNeckBottom-5;
   pinServoNeckBottom.write(posNeckBottom);
 }
