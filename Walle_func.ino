@@ -133,7 +133,7 @@ void servoNeckBottomDown(){
 
 void sweep4ServosBackward(Servo servo1, int starter1, int ender1, Servo servo2, int starter2, int ender2, Servo servo3, int starter3, int ender3, Servo servo4, int starter4, int ender4)
 {
-  for (int angle1 = starter1, angle2 = starter2, angle3 = starter3, angle4 = starter4; angle1 >= ender1 || angle2 >= ender2 || angle3 >= ender3 || angle4 >= ender4; angle1 -= 5, angle2 -= 5, angle3 -= 5 , angle4 -= 5)
+  for (int angle1 = starter1, angle2 = starter2, angle3 = starter3, angle4 = starter4; angle1 >= ender1 || angle2 >= ender2 || angle3 >= ender3 || angle4 >= ender4; angle1 -= 1, angle2 -= 1, angle3 -= 1 , angle4 -= 1)
   {
     if (angle1 >= ender1)
       servo1.write(angle1);
@@ -143,13 +143,13 @@ void sweep4ServosBackward(Servo servo1, int starter1, int ender1, Servo servo2, 
       servo3.write(angle3);
     if (angle4 >= ender4)
       servo4.write(angle4);
-    delay(15);
+    delay(10);
   }
 }
 
 void sweep4ServosForward(Servo servo1, int starter1, int ender1, Servo servo2, int starter2, int ender2, Servo servo3, int starter3, int ender3, Servo servo4, int starter4, int ender4)
 {
-  for (int angle1 = starter1, angle2 = starter2, angle3 = starter3, angle4 = starter4; angle1 <= ender1 || angle2 <= ender2 || angle3 <= ender3 || angle4 <= ender4; angle1 += 5, angle2 += 5, angle3 += 5 , angle4 += 5)
+  for (int angle1 = starter1, angle2 = starter2, angle3 = starter3, angle4 = starter4; angle1 <= ender1 || angle2 <= ender2 || angle3 <= ender3 || angle4 <= ender4; angle1 += 1 angle2 += 1, angle3 += 1, angle4 += 1)
   {
     if (angle1 <= ender1)
       servo1.write(angle1);
@@ -159,7 +159,7 @@ void sweep4ServosForward(Servo servo1, int starter1, int ender1, Servo servo2, i
       servo3.write(angle3);
     if (angle4 <= ender4)
       servo4.write(angle4);
-    delay(15);
+    delay(10);
   }
 }
 
@@ -174,5 +174,58 @@ void motion2(){
 }
 
 
-void loop() {
+ void loop() {
+  if (Serial.available() > 0) {
+    String data1 = Serial.readStringUntil('\n');
+    char data2 = data1[0];
+  }
+  switch (data) {
+    case 'A':
+           forward();
+           break;
+    case 'B':
+           backward();
+           break;
+    case 'C':
+           right();
+           break;
+    case 'D':
+           left();
+           break;
+    case 'E':
+           stop();
+           break;
+    case 'F':
+           servoNeckTopRight();
+           break;
+    case 'G':
+           servoNeckTopLeft();
+           break;
+    case 'H':
+           servoNeckMiddleUp();
+           break;
+    case 'I':
+           servoNeckMiddleDown();
+           break;
+    case 'J':
+           servoNeckBottomUp();
+           break;
+    case 'K':
+           servoNeckBottomDown();
+           break;
+    case 'L':
+           servoNeckBottomUp();
+           break;
+    case 'M'
+           motion1();
+    case 'N'
+           motion2();
+
+     
+
+  }
+
+
+  
 }
+
