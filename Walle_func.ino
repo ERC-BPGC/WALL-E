@@ -18,6 +18,13 @@ int posNeckTop = 90;
 int posNeckMiddle = 90;
 int posLArm = 90;
 
+Servo ServoNeckTopA;
+Servo ServoNeckMiddle;
+Servo ServoNeckBottom;
+Servo ServoLArm;
+Servo ServoRArm;
+Servo ServoLEye;
+Servo ServoREye;
 
 
 Servo myservo;  
