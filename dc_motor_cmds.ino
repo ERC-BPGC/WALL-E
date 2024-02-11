@@ -63,15 +63,6 @@ void backward()
 void loop() {
   // put your main code here, to run repeatedly:
 
-void Happy{
-  servoLArm.write(90)
-  servoRArm.write(90)
-  servoLEye.write(45)
-  int posArm = 90;
-  for (
-}
-
-}
 
 }
 
