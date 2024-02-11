@@ -26,15 +26,15 @@ Servo ServoLEye;
 Servo ServoREye;
 
 
-Servo myservo;  
+ 
 void setup() {
-  myservo.attach(9);  
-  myservo.attach(10);
-  myservo.attach(11));
-  myservo.attach(A0);
-  myservo.attach(3);
-  myservo.attach(5);
-  myservo.attach(6);
+  ServoLArm.attach(pinServoLArm);  
+  ServoRArm.attach(pinServoRArm);
+  ServoLEye.attach(pinServoLEye);
+  ServoNeckTopA.attach(A0);
+  ServoREye.attach(pinServoREye);
+  ServoNeckMiddle.attach(pinServoNeckMiddle);
+  ServoNeckBottom.attach(pinServoNeckBottom);
 
   pinMode(dir1_left, OUTPUT);
   pinMode(dir2_left, OUTPUT);
