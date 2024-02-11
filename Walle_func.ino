@@ -15,6 +15,7 @@ int pinServoLEye = 11;
 int pinServoREye = 3;
 int posNeckTop = 90;
 int posNeckMiddle = 90;
+int posNeckBottom = 90;
 int posLArm = 90;
 
 Servo ServoNeckTopA;
@@ -97,43 +98,81 @@ void backward()
   digitalWrite(dir2_right, LOW);
   analogWrite(speedPinRight, mSpeed);
 }
-void servoNeckTopRight{
+void servoNeckTopRight(){
   posNeckTop = posNeckTop+5;
-  pinServoNeckTopA.write(posNeckTop);
+  ServoNeckTopA.write(posNeckTop);
 }
-void servoNeckTopLeft{ 
+void servoNeckTopLeft(){ 
   posNeckTop = posNeckTop-5;
-  pinServoNeckTopA.write(posNeckTop);
+  ServoNeckTopA.write(posNeckTop);
 }
-void servoNeckMiddleUp{
+void servoNeckMiddleUp(){
   posNeckMiddle = posNeckMiddle+5;
-  pinServoNeckMiddle.write(posNeckMiddle);
+  ServoNeckMiddle.write(posNeckMiddle);
 }
-void servoNeckMiddleDown{
+void servoNeckMiddleDown(){
   posNeckMiddle = posNeckMiddle-5;
-  pinServoNeckMiddle.write(posNeckMiddle);
+  ServoNeckMiddle.write(posNeckMiddle);
 }
-void servoNeckBottomUp{
+void servoNeckBottomUp(){
   posNeckBottom = posNeckBottom+5;
-  pinServoNeckBottom.write(posNeckBottom);
+  ServoNeckBottom.write(posNeckBottom);
 }
-void servoNeckBottomDown{
+void servoNeckBottomDown(){
   posNeckBottom = posNeckBottom-5;
-  pinServoNeckBottom.write(posNeckBottom);
+  ServoNeckBottom.write(posNeckBottom);
 }
 
-void motion1{
+void sweep4ServosBackward(Servo servo1, int starter1, int ender1, Servo servo2, int starter2, int ender2, Servo servo3, int starter3, int ender3, Servo servo4, int starter4, int ender4)
+{
+  for (int angle1 = starter1, angle2 = starter2, angle3 = starter3, angle4 = starter4; angle1 >= ender1 || angle2 >= ender2 || angle3 >= ender3 || angle4 >= ender4; angle1 -= 5, angle2 -= 5, angle3 -= 5 , angle4 -= 5)
+  {
+    if (angle1 >= ender1)
+      servo1.write(angle1);
+    if (angle2 >= ender2)
+      servo2.write(angle2);
+    if (angle3 >= ender3)
+      servo2.write(angle3);
+    if (angle4 >= ender4)
+      servo2.write(angle4);
+    delay(15);
+  }
+}
+
+void sweep4ServosForward(Servo servo1, int starter1, int ender1, Servo servo2, int starter2, int ender2, Servo servo3, int starter3, int ender3, Servo servo4, int starter4, int ender4)
+{
+  for (int angle1 = starter1, angle2 = starter2, angle3 = starter3, angle4 = starter4; angle1 <= ender1 || angle2 <= ender2 || angle3 <= ender3 || angle4 <= ender4; angle1 += 5, angle2 += 5, angle3 += 5 , angle4 += 5)
+  {
+    if (angle1 <= ender1)
+      servo1.write(angle1);
+    if (angle2 <= ender2)
+      servo2.write(angle2);
+    if (angle3 <= ender3)
+      servo2.write(angle3);
+    if (angle4 <= ender4)
+      servo2.write(angle4);
+    delay(15);
+  }
+}
+
+void motion1(){
   sweep4ServosBackward(ServoLArm, 90, 0, ServoRArm, 90, 0, ServoLEye, 90, 0, ServoREye, 90, 0);
   sweep4ServosForward(ServoLArm, 0, 90, ServoRArm, 0, 90, ServoLEye, 0, 45, ServoREye, 0, 45);
 }
 
-void motion2{
+void motion2(){
   sweep4ServosForward(ServoLArm, 0, 120, ServoRArm, 0, 120, ServoLEye, 0, 100, ServoREye, 0, 100);
   sweep4ServosBackward(ServoLArm, 120, 45, ServoRArm, 120, 45, ServoLEye, 100, 30, ServoREye, 100, 30);
 }
 
 
 void loop() {
-  myservo.writeMicroseconds(1500);  
+  ServoNeckTopA.writeMicroseconds(1500); 
+  ServoNeckMiddle.writeMicroseconds(1500); 
+  ServoNeckBottom.writeMicroseconds(1500); 
+  ServoLArm.writeMicroseconds(1500); 
+  ServoRArm.writeMicroseconds(1500); 
+  ServoLEye.writeMicroseconds(1500); 
+  ServoREye.writeMicroseconds(1500);
   delay(1000); 
 }
