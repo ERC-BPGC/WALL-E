@@ -48,6 +48,17 @@ void setup() {
   Serial.begin(9600);
 
 }
+
+void stop()
+{
+  digitalWrite(dir1_left, LOW);
+  digitalWrite(dir2_left, LOW);
+  analogWrite(speedPinLeft, mSpeed);
+  digitalWrite(dir1_right, LOW);
+  digitalWrite(dir2_right, LOW);
+  analogWrite(speedPinRight, mSpeed);
+}
+
 void forward()
 {
   digitalWrite(dir1_left, LOW);
