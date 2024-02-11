@@ -44,6 +44,14 @@ void setup() {
   pinMode(dir2_right, OUTPUT);
   pinMode(speedPinRight, OUTPUT);
 
+  ServoNeckTopA.writeMicroseconds(1500); 
+  ServoNeckMiddle.writeMicroseconds(1500); 
+  ServoNeckBottom.writeMicroseconds(1500); 
+  ServoLArm.writeMicroseconds(1500); 
+  ServoRArm.writeMicroseconds(1500); 
+  ServoLEye.writeMicroseconds(1500); 
+  ServoREye.writeMicroseconds(1500);
+  delay(1000); 
 
   Serial.begin(9600);
 
@@ -164,31 +172,7 @@ void motion2(){
   sweep4ServosForward(ServoLArm, 0, 120, ServoRArm, 0, 120, ServoLEye, 0, 100, ServoREye, 0, 100);
   sweep4ServosBackward(ServoLArm, 120, 45, ServoRArm, 120, 45, ServoLEye, 100, 30, ServoREye, 100, 30);
 }
-void motion3(){
-  
-  sweep4ServosForward(ServoLEye, 0, 90, ServoREye, 0, 90, ServoNeckMiddle, 0, 45, ServoNeckBottom, 0, 45);
-  sweep4ServosBackward(ServoLEye, 90, 0, ServoREye, 90, 0, ServoNeckMiddle, 45, 0, ServoNeckBottom, 45, 0);
-
-}
-
-void motion4(){
-  sweep4ServosForward(ServoLEye, 0, 45, ServoREye, 0, 45, ServoLArm, 0, 120, ServoRArm, 0, 120);
-  sweep4ServosBackward(ServoLEye, 45, 0, ServoREye, 45, 0, ServoLArm, 120, 0, ServoRArm, 120, 0);
-}
-
-void motion5(){
-  sweep4ServosForward(ServoLArm, 0, 60, ServoRArm, 0, 30, ServoLEye 0, 60, ServoREye, 0, 60);
-  sweep4ServosBackward(ServoLArm, 60, 0, ServoRArm, 30, 0, ServoLEye 60, 0, ServoREye, 60, 0);
-}
 
 
 void loop() {
-  ServoNeckTopA.writeMicroseconds(1500); 
-  ServoNeckMiddle.writeMicroseconds(1500); 
-  ServoNeckBottom.writeMicroseconds(1500); 
-  ServoLArm.writeMicroseconds(1500); 
-  ServoRArm.writeMicroseconds(1500); 
-  ServoLEye.writeMicroseconds(1500); 
-  ServoREye.writeMicroseconds(1500);
-  delay(1000); 
 }
