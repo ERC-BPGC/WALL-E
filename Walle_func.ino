@@ -6,7 +6,7 @@ int dir2_right=8;
 int speedPinLeft = 13;
 int speedPinRight = 12;
 int mSpeed = 255;  // max speed
-int pinServoNeckTopA = A0;
+#define pinServoNeckTopA A0;
 int pinServoNeckMiddle = 5;
 int pinServoNeckBottom = 6;
 int pinServoLArm = 9;
