@@ -20,7 +20,7 @@ void loop() {
 }
 
 void sweep2ServosForward(Servo servo1, int starter1, int ender1, Servo servo2, int starter2, int ender2){
-  for (int angle1 = starter1, int angle2 = starter2; angle1 <= ender1 || angle2 <= ender2; angle1 += 5, angle2 += 5){
+  for (int angle1 = starter1, angle2 = starter2; angle1 <= ender1 || angle2 <= ender2; angle1 += 5, angle2 += 5){
     if (angle1<=ender1)
     servo1.write(angle1);
     if (angle2<=ender2)
