@@ -1,4 +1,3 @@
-//Aadit is the dumbest person that wall e has ever met
 #include <Servo.h>
 int dir2_left=2;
 int dir1_left=7;
@@ -122,77 +121,16 @@ void servoNeckBottomDown{
   posNeckBottom = posNeckBottom-5;
   pinServoNeckBottom.write(posNeckBottom);
 }
-void ServoArmSad{
-  pinServoLArm.write(90);
-  pinServoRArm.write(90);
-  while(1){
-  posLArm = posLArm-5;
-  pinServoLArm.write(posLArm);
-  posRArm = posRArm-5;
-  pinServoRArm.write(posRArm);
-  delay(15);
-  if(posLArm<=0||posRArm<=0)
-  break;
-  }
-}
-void ServoEyeSad{
-  pinServoLEye.write(90);
-  pinServoREyewrite(90);
-  while(1){
-  posLEye = posLEye-2;
-  pinServoLEye.write(posLEye);
-  posREye = posREye-2;
-  pinServoREye.write(posREye);
-  delay(15);
-  if(posLEye<=0||posREye<=0)
-  break;
-  }
+
+void motion1{
+  sweep4ServosBackward(ServoLArm, 90, 0, ServoRArm, 90, 0, ServoLEye, 90, 0, ServoREye, 90, 0);
+  sweep4ServosForward(ServoLArm, 0, 90, ServoRArm, 0, 90, ServoLEye, 0, 45, ServoREye, 0, 45);
 }
 
-void ServoArmHappy{
-  int cnt=0;
-  pinServoRArm.write(0);
-  pinServoLArm.write(0);
-  int posArm = 0;
-  if(posArm==0){
-  for(1;posArm<=180;posArm+=5){
-  pinServoRArm.write(posArm);
-  pinServoLArm.write(posArm);
-  delay(15);
-  }
-  }
-  if(posArm==180&&cnt<=3){
-  for(1;posArm>=0;posArm-=5){
-  pinServoRArm.write(posArm);
-  pinServoLArm.write(posArm);
-  delay(15);
-  }
-  cnt++;
-  }
+void motion2{
+  sweep4ServosForward(ServoLArm, 0, 120, ServoRArm, 0, 120, ServoLEye, 0, 100, ServoREye, 0, 100);
+  sweep4ServosBackward(ServoLArm, 120, 45, ServoRArm, 120, 45, ServoLEye, 100, 30, ServoREye, 100, 30);
 }
-
-void ServoEyeHappy{
-  int cnt=0;
-  pinServoLEye.write(0);
-  pinServoREye.write(0);
-  int posEye = 0;
-  if(posEye==0){
-  for(1;posEye<=180;posEye+=5){
-  pinServoREye.write(posEye);
-  pinServoLEye.write(posEye);
-  delay(15);
-  }
-  }
-  if(posEye==180&&cnt<=3){
-  for(1;posEye>=0;posEye-=5){
-  pinServoREye.write(posArm);
-  pinServoLEye.write(posArm);
-  delay(15);
-  }
-  cnt++;
-  }
-}
-
 
 
 void loop() {
