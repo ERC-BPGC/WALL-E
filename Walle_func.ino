@@ -17,6 +17,7 @@ int posNeckTop = 90;
 int posNeckMiddle = 90;
 int posNeckBottom = 90;
 int posLArm = 90;
+int posRArm = 90;
 
 Servo ServoNeckTopA;
 Servo ServoNeckMiddle;
@@ -148,10 +149,39 @@ void servoNeckBottomDown(){
   delay(10);
   }
 }
+void LArmDown(){
+  while(posLArm >= 75){
+    posLArm = posLArm-1;
+    ServoLArm.write(posLArm);
+    delay(10);
+  }
+}
+void LArmUp(){
+  while(posLArm < 180){
+    posLArm = posLArm+1;
+    ServoLArm.write(posLArm);
+    delay(10);
+  }
+}
+void RArmDown(){
+  while(posRArm >= 75){
+    posRArm = posRArm-1;
+    ServoRArm.write(posRArm);
+    delay(10);
+  }
+}
+void RArmUp(){
+  while(posRArm < 180){
+    posRArm = posRArm+1;
+    ServoRArm.write(posRArm);
+    delay(10);
+  }
+}
+
 
 void sweep4ServosBackward(Servo servo1, int starter1, int ender1, Servo servo2, int starter2, int ender2, Servo servo3, int starter3, int ender3, Servo servo4, int starter4, int ender4)
 {
-  for (int angle1 = starter1, angle2 = starter2, angle3 = starter3, angle4 = starter4; angle1 >= ender1 || angle2 >= ender2 || angle3 >= ender3 || angle4 >= ender4; angle1 -= 5, angle2 -= 5, angle3 -= 5 , angle4 -= 5)
+  for (int angle1 = starter1, angle2 = starter2, angle3 = starter3, angle4 = starter4; angle1 >= ender1 || angle2 >= ender2 || angle3 >= ender3 || angle4 >= ender4; angle1 -= 1, angle2 -= 1, angle3 -= 1 , angle4 -= 1)
   {
     if (angle1 >= ender1)
       servo1.write(angle1);
@@ -167,7 +197,7 @@ void sweep4ServosBackward(Servo servo1, int starter1, int ender1, Servo servo2, 
 
 void sweep4ServosForward(Servo servo1, int starter1, int ender1, Servo servo2, int starter2, int ender2, Servo servo3, int starter3, int ender3, Servo servo4, int starter4, int ender4)
 {
-  for (int angle1 = starter1, angle2 = starter2, angle3 = starter3, angle4 = starter4; angle1 <= ender1 || angle2 <= ender2 || angle3 <= ender3 || angle4 <= ender4; angle1 += 5, angle2 += 5, angle3 += 5 , angle4 += 5)
+  for (int angle1 = starter1, angle2 = starter2, angle3 = starter3, angle4 = starter4; angle1 <= ender1 || angle2 <= ender2 || angle3 <= ender3 || angle4 <= ender4; angle1 += 1, angle2 += 1, angle3 += 1 , angle4 += 1)
   {
     if (angle1 <= ender1)
       servo1.write(angle1);
