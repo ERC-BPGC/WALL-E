@@ -108,14 +108,16 @@ void backward()
 }
 void servoNeckTopRight(){
   while(posNeckTop<160){
-  posNeckTop = posNeckTop+5;
+  posNeckTop = posNeckTop+1;
   ServoNeckTopA.write(posNeckTop);
+   delay(25);
   }
 }
 void servoNeckTopLeft(){ 
   while(posNeckTop>30){
-  posNeckTop = posNeckTop-5;
+  posNeckTop = posNeckTop-1;
   ServoNeckTopA.write(posNeckTop);
+   delay(25);
   }
 }
 void servoNeckMiddleUp(){
