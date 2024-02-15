@@ -109,70 +109,70 @@ void backward()
 }
 void servoNeckTopRight(){
   while(posNeckTop<160){
-  posNeckTop = posNeckTop+1;
+  posNeckTop = posNeckTop+15;
   ServoNeckTopA.write(posNeckTop);
   delay(25);
   }
 }
 void servoNeckTopLeft(){ 
   while(posNeckTop>30){
-  posNeckTop = posNeckTop-1;
+  posNeckTop = posNeckTop-15;
   ServoNeckTopA.write(posNeckTop);
   delay(25);
   }
 }
 void servoNeckMiddleUp(){
   while(posNeckMiddle<160){
-  posNeckMiddle = posNeckMiddle+1;
+  posNeckMiddle = posNeckMiddle+5;
   ServoNeckMiddle.write(posNeckMiddle);
   delay(10);
   }
 }
 void servoNeckMiddleDown(){
   while(posNeckMiddle>10){
-  posNeckMiddle = posNeckMiddle-1;
+  posNeckMiddle = posNeckMiddle-5;
   ServoNeckMiddle.write(posNeckMiddle);
   delay(10);
   }
 }
 void servoNeckBottomUp(){
   while(posNeckBottom<100){
-  posNeckBottom = posNeckBottom+1;
+  posNeckBottom = posNeckBottom+5;
   ServoNeckBottom.write(posNeckBottom);
   delay(10);
   }
 }
 void servoNeckBottomDown(){
   while(posNeckBottom>10){
-  posNeckBottom = posNeckBottom-1;
+  posNeckBottom = posNeckBottom-5;
   ServoNeckBottom.write(posNeckBottom);
   delay(10);
   }
 }
 void LArmDown(){
   while(posLArm >= 75){
-    posLArm = posLArm-1;
+    posLArm = posLArm-5;
     ServoLArm.write(posLArm);
     delay(10);
   }
 }
 void LArmUp(){
   while(posLArm < 180){
-    posLArm = posLArm+1;
+    posLArm = posLArm+5;
     ServoLArm.write(posLArm);
     delay(10);
   }
 }
 void RArmDown(){
   while(posRArm >= 75){
-    posRArm = posRArm-1;
+    posRArm = posRArm-5;
     ServoRArm.write(posRArm);
     delay(10);
   }
 }
 void RArmUp(){
   while(posRArm < 180){
-    posRArm = posRArm+1;
+    posRArm = posRArm+5;
     ServoRArm.write(posRArm);
     delay(10);
   }
@@ -181,7 +181,7 @@ void RArmUp(){
 
 void sweep4ServosBackward(Servo servo1, int starter1, int ender1, Servo servo2, int starter2, int ender2, Servo servo3, int starter3, int ender3, Servo servo4, int starter4, int ender4)
 {
-  for (int angle1 = starter1, angle2 = starter2, angle3 = starter3, angle4 = starter4; angle1 >= ender1 || angle2 >= ender2 || angle3 >= ender3 || angle4 >= ender4; angle1 -= 1, angle2 -= 1, angle3 -= 1 , angle4 -= 1)
+  for (int angle1 = starter1, angle2 = starter2, angle3 = starter3, angle4 = starter4; angle1 >= ender1 || angle2 >= ender2 || angle3 >= ender3 || angle4 >= ender4; angle1 -= 5, angle2 -= 5, angle3 -= 5 , angle4 -= 5)
   {
     if (angle1 >= ender1)
       servo1.write(angle1);
@@ -197,7 +197,7 @@ void sweep4ServosBackward(Servo servo1, int starter1, int ender1, Servo servo2, 
 
 void sweep4ServosForward(Servo servo1, int starter1, int ender1, Servo servo2, int starter2, int ender2, Servo servo3, int starter3, int ender3, Servo servo4, int starter4, int ender4)
 {
-  for (int angle1 = starter1, angle2 = starter2, angle3 = starter3, angle4 = starter4; angle1 <= ender1 || angle2 <= ender2 || angle3 <= ender3 || angle4 <= ender4; angle1 += 1, angle2 += 1, angle3 += 1 , angle4 += 1)
+  for (int angle1 = starter1, angle2 = starter2, angle3 = starter3, angle4 = starter4; angle1 <= ender1 || angle2 <= ender2 || angle3 <= ender3 || angle4 <= ender4; angle1 += 5, angle2 += 5, angle3 += 5 , angle4 += 5)
   {
     if (angle1 <= ender1)
       servo1.write(angle1);
@@ -239,10 +239,10 @@ void motion4(){
 }
 
 void motion5(){
-  sweep4ServosForward(ServoLArm, 75, 135, ServoRArm, 75, 135, ServoLEye 180, 165, ServoREye, 0, 15);
-  sweep4ServosBackward(ServoLArm, 135, 75, ServoRArm, 135, 75, ServoLEye 165, 180, ServoREye, 15, 0);
-  sweep4ServosForward(ServoLArm, 75, 135, ServoRArm, 75, 135, ServoLEye 180, 165, ServoREye, 0, 15);
-  sweep4ServosBackward(ServoLArm, 135, 75, ServoRArm, 135, 75, ServoLEye 165, 180, ServoREye, 15, 0);
+  sweep4ServosForward(ServoLArm, 75, 135, ServoRArm, 75, 135, ServoLEye, 180, 165, ServoREye, 0, 15);
+  sweep4ServosBackward(ServoLArm, 135, 75, ServoRArm, 135, 75, ServoLEye, 165, 180, ServoREye, 15, 0);
+  sweep4ServosForward(ServoLArm, 75, 135, ServoRArm, 75, 135, ServoLEye, 180, 165, ServoREye, 0, 15);
+  sweep4ServosBackward(ServoLArm, 135, 75, ServoRArm, 135, 75, ServoLEye, 165, 180, ServoREye, 15, 0);
 }
 
 
@@ -302,9 +302,16 @@ void loop() {
     case 'P':
            motion4();
            break;
-    /*case 'Q':
+    case 'Q':
            motion5();
-           break;*/
+           break;
+    case 'R':
+          LArmDown();
+          break;
+    case 'S':
+          LArmUp();
+          break;
+
 
   }
 
