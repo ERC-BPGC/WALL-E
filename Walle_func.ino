@@ -16,7 +16,7 @@ int pinServoRArm = 10;
 int pinServoLEye = 11;
 int pinServoREye = 3;
 int posNeckTop = 90;
-int posNeckMiddle = 90;
+int posNeckMiddle = 60;
 int posNeckBottom = 90;
 int posLArm = 90;
 int posRArm = 90;
@@ -49,13 +49,13 @@ void setup() {
   pinMode(dir2_right, OUTPUT);
   
 
-  ServoNeckTopA.writeMicroseconds(1500); 
-  ServoNeckMiddle.writeMicroseconds(1500); 
-  ServoNeckBottom.writeMicroseconds(1500); 
-  ServoLArm.writeMicroseconds(1500); 
-  ServoRArm.writeMicroseconds(1500); 
-  ServoLEye.writeMicroseconds(2500); 
-  ServoREye.writeMicroseconds(500);
+  ServoNeckTopA.write(90); 
+  ServoNeckMiddle.write(90); 
+  ServoNeckBottom.write(180); 
+  ServoLArm.write(90); 
+  ServoRArm.write(90); 
+  ServoLEye.write(165); 
+  ServoREye.write(15);
   delay(1000); 
 
   Serial.begin(9600);
@@ -154,7 +154,7 @@ void servoNeckBottomDown(){
   }
 }
 void LArmDown(){
-  while(posLArm >= 75){
+  while(posLArm > 75){
     posLArm = posLArm-5;
     ServoLArm.write(posLArm);
     delay(10);
@@ -168,18 +168,34 @@ void LArmUp(){
   }
 }
 void RArmDown(){
-  while(posRArm >= 75){
-    posRArm = posRArm-5;
+  while(posRArm < 105){
+    posRArm = posRArm+5;
     ServoRArm.write(posRArm);
     delay(10);
   }
 }
 void RArmUp(){
-  while(posRArm < 180){
-    posRArm = posRArm+5;
+  while(posRArm > 0){
+    posRArm = posRArm-5;
     ServoRArm.write(posRArm);
     delay(10);
   }
+}
+void centre(){
+  ServoNeckTopA.write(90); 
+  delay(10);
+  ServoNeckMiddle.write(90); 
+  delay(10);
+  ServoNeckBottom.write(180); 
+  delay(10);
+  ServoLArm.write(90); 
+  delay(10);
+  ServoRArm.write(90); 
+  delay(10);
+  ServoLEye.write(165); 
+  delay(10);
+  ServoREye.write(15);
+  delay(10);
 }
 /*
 void LEyeUp(){
@@ -247,8 +263,8 @@ void sweep4ServosForward(Servo servo1, int starter1, int ender1, Servo servo2, i
 }
 
 // angle constraints for LEye: 180 to 150, REye = 0 to 30
-//angle constraints for arms: 180(top) to 75(down)
-
+//angle constraints for LArm: 180(top) to 75(down)
+//angle constraint for RArm: 0(top) to 105(down)
 void motion1(){
   sweep4ServosBackward(ServoLArm, 180, 75, ServoRArm, 180, 75, ServoLEye, 180, 150, ServoREye, 30, 0);
   sweep4ServosForward(ServoLArm, 75, 180, ServoRArm, 75, 180, ServoLEye, 150, 180, ServoREye, 0, 30);
@@ -361,6 +377,9 @@ void loop() {
     case 'X':
           REyeDown();
           break;  */
+    case 'Y':
+          centre();
+          break;
 
 
   }
