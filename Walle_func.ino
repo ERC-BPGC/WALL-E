@@ -6,7 +6,7 @@ int dir1_right=4;
 int dir2_right=8;
 
 int mSpeed = 255;  // max speed
-#define pinServoNeckTopA A0;
+
 int pinServoNeckMiddle = 5;
 int pinServoNeckBottom = 6;
 int pinServoLArm = 9;
@@ -18,6 +18,8 @@ int posNeckMiddle = 90;
 int posNeckBottom = 90;
 int posLArm = 90;
 int posRArm = 90;
+int posLEye = 160;
+int posREye = 10;
 
 Servo ServoNeckTopA;
 Servo ServoNeckMiddle;
@@ -68,7 +70,7 @@ void stop()
   
 }
 
-void forward()
+void backward()
 {
   digitalWrite(dir1_left, LOW);
   digitalWrite(dir2_left, HIGH);
@@ -78,7 +80,7 @@ void forward()
   
 }
 
-void right()
+void left()
 {
   digitalWrite(dir1_left, HIGH);
   digitalWrite(dir2_left, LOW);
@@ -88,7 +90,7 @@ void right()
   
 }
 
-void left()
+void right()
 {
   digitalWrite(dir1_left, LOW);
   digitalWrite(dir2_left, HIGH);
@@ -98,7 +100,7 @@ void left()
   
 }
 
-void backward()
+void forward()
 {
   digitalWrite(dir1_left, HIGH);
   digitalWrite(dir2_left, LOW);
@@ -109,14 +111,14 @@ void backward()
 }
 void servoNeckTopRight(){
   while(posNeckTop<160){
-  posNeckTop = posNeckTop+15;
+  posNeckTop = posNeckTop+1;
   ServoNeckTopA.write(posNeckTop);
   delay(25);
   }
 }
 void servoNeckTopLeft(){ 
   while(posNeckTop>30){
-  posNeckTop = posNeckTop-15;
+  posNeckTop = posNeckTop-1;
   ServoNeckTopA.write(posNeckTop);
   delay(25);
   }
@@ -136,7 +138,7 @@ void servoNeckMiddleDown(){
   }
 }
 void servoNeckBottomUp(){
-  while(posNeckBottom<100){
+  while(posNeckBottom<120){
   posNeckBottom = posNeckBottom+5;
   ServoNeckBottom.write(posNeckBottom);
   delay(10);
@@ -177,6 +179,37 @@ void RArmUp(){
     delay(10);
   }
 }
+/*
+void LEyeUp(){
+  while(posLEye < 180){
+    posLEye = posLEye+1;
+    ServoLEye.write(posLEye);
+    delay(10);
+  }
+}
+void LEyeDown(){
+  while(posLEye > 150){
+    posLEye = posLEye-1;
+    ServoLEye.write(posLEye);
+    delay(10);
+  }
+}
+void REyeUp(){
+  while(posREye < 30){
+    posREye = posREye+1;
+    ServoREye.write(posREye);
+    delay(10);
+  }
+}
+void REyeDown(){
+  while(posREye > 0){
+    posREye = posREye-1;
+    ServoREye.write(posREye);
+    delay(10);
+  }
+}
+*/
+
 
 
 void sweep4ServosBackward(Servo servo1, int starter1, int ender1, Servo servo2, int starter2, int ender2, Servo servo3, int starter3, int ender3, Servo servo4, int starter4, int ender4)
@@ -288,29 +321,44 @@ void loop() {
            servoNeckBottomDown();
            break;
     case 'L':
-           servoNeckBottomUp();
-           break;
-    case 'M':
            motion1();
            break;
-    case 'N':
+    case 'M':
            motion2();
            break;
-    case 'O':
+    case 'N':
            motion3();
            break;
-    case 'P':
+    case 'O':
            motion4();
            break;
-    case 'Q':
+    case 'P':
            motion5();
            break;
-    case 'R':
+    case 'Q':
           LArmDown();
           break;
-    case 'S':
+    case 'R':
           LArmUp();
           break;
+    case 'S':
+          RArmDown();
+          break;
+    case 'T':
+          RArmUp();
+          break;
+   /* case 'U':
+          REyeUp();
+          break;
+    case 'V':
+          REyeDown();
+          break;
+    case 'W':
+          LEyeUp();
+          break;
+    case 'X':
+          REyeDown();
+          break;  */
 
 
   }
