@@ -281,7 +281,7 @@ void motion5(){
 
 void loop() {
   String data1;
-  char data2;
+  char data2 = 'Z';
   if (Serial.available() > 0) {
     data1 = Serial.readStringUntil('\n');
     data2 = data1[0];
