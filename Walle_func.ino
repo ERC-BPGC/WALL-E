@@ -5,6 +5,8 @@ int dir1_left=7;
 int dir1_right=4;
 int dir2_right=8;
 
+char data2 = 'Z';
+
 int mSpeed = 255;  // max speed
 
 int pinServoNeckMiddle = 5;
@@ -18,8 +20,8 @@ int posNeckMiddle = 90;
 int posNeckBottom = 90;
 int posLArm = 90;
 int posRArm = 90;
-int posLEye = 160;
-int posREye = 10;
+int posLEye = 180;
+int posREye = 0;
 
 Servo ServoNeckTopA;
 Servo ServoNeckMiddle;
@@ -52,8 +54,8 @@ void setup() {
   ServoNeckBottom.writeMicroseconds(1500); 
   ServoLArm.writeMicroseconds(1500); 
   ServoRArm.writeMicroseconds(1500); 
-  ServoLEye.writeMicroseconds(1500); 
-  ServoREye.writeMicroseconds(1500);
+  ServoLEye.writeMicroseconds(2500); 
+  ServoREye.writeMicroseconds(500);
   delay(1000); 
 
   Serial.begin(9600);
@@ -281,7 +283,7 @@ void motion5(){
 
 void loop() {
   String data1;
-  char data2 = 'Z';
+  // char data2 = 'Z';  dont remove this comment 
   if (Serial.available() > 0) {
     data1 = Serial.readStringUntil('\n');
     data2 = data1[0];
