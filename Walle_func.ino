@@ -154,28 +154,28 @@ void servoNeckBottomDown(){
   }
 }
 void LArmDown(){
-  while(posLArm > 75){
+  while(posLArm > 0){
     posLArm = posLArm-5;
     ServoLArm.write(posLArm);
     delay(10);
   }
 }
 void LArmUp(){
-  while(posLArm < 180){
+  while(posLArm < 100){
     posLArm = posLArm+5;
     ServoLArm.write(posLArm);
     delay(10);
   }
 }
 void RArmDown(){
-  while(posRArm < 105){
+  while(posRArm < 180){
     posRArm = posRArm+5;
     ServoRArm.write(posRArm);
     delay(10);
   }
 }
 void RArmUp(){
-  while(posRArm > 0){
+  while(posRArm > 75){
     posRArm = posRArm-5;
     ServoRArm.write(posRArm);
     delay(10);
@@ -188,9 +188,9 @@ void centre(){
   delay(10);
   ServoNeckBottom.write(90); 
   delay(10);
-  ServoLArm.write(90); 
+  ServoLArm.write(100); 
   delay(10);
-  ServoRArm.write(90); 
+  ServoRArm.write(100); 
   delay(10);
   ServoLEye.write(165); 
   delay(10);
@@ -266,13 +266,13 @@ void sweep4ServosForward(Servo servo1, int starter1, int ender1, Servo servo2, i
 //angle constraints for LArm: 180(top) to 75(down)
 //angle constraint for RArm: 0(top) to 105(down)
 void motion1(){
-  sweep4ServosBackward(ServoLArm, 180, 75, ServoRArm, 105, 0, ServoLEye, 180, 150, ServoREye, 30, 0);
-  sweep4ServosForward(ServoLArm, 75, 180, ServoRArm, 0, 105, ServoLEye, 150, 180, ServoREye, 0, 30);
+  sweep4ServosBackward(ServoLArm, 100, 0, ServoRArm, 180, 80, ServoLEye, 180, 150, ServoREye, 30, 0);
+  sweep4ServosForward(ServoLArm, 0, 100, ServoRArm, 80, 180, ServoLEye, 150, 180, ServoREye, 0, 30);
 }
 
 void motion2(){
-  sweep4ServosForward(ServoLArm, 75, 120, ServoRArm, 0, 75, ServoLEye, 170, 180, ServoREye, 0, 15);
-  sweep4ServosBackward(ServoLArm, 120, 75, ServoRArm, 75, 0, ServoLEye, 180, 170, ServoREye, 15, 0);
+  sweep4ServosForward(ServoLArm, 0, 75, ServoRArm, 130, 180, ServoLEye, 170, 180, ServoREye, 0, 15);
+  sweep4ServosBackward(ServoLArm, 75, 0, ServoRArm, 180, 130, ServoLEye, 180, 170, ServoREye, 15, 0);
 }
 
 void motion3(){
@@ -283,17 +283,13 @@ void motion3(){
 }
 
 void motion4(){
-  sweep4ServosForward(ServoLEye, 150, 180, ServoREye, 0, 30, ServoLArm, 75, 180, ServoRArm, 0, 100);
-  sweep4ServosBackward(ServoLEye, 180, 150, ServoREye, 30, 0, ServoLArm, 120, 75, ServoRArm, 100, 0);
-  sweep4ServosForward(ServoLEye, 150, 180, ServoREye, 0, 30, ServoLArm, 75, 180, ServoRArm, 0, 100);
-  sweep4ServosBackward(ServoLEye, 180, 150, ServoREye, 30, 0, ServoLArm, 120, 75, ServoRArm, 100, 0);
+  sweep4ServosForward(ServoLEye, 150, 180, ServoREye, 0, 30, ServoLArm, 0, 69, ServoRArm, 110, 180);
+  sweep4ServosBackward(ServoLEye, 180, 150, ServoREye, 30, 0, ServoLArm, 69, 0, ServoRArm, 180, 110);
 }
 
 void motion5(){
-  sweep4ServosForward(ServoLArm, 75, 135, ServoRArm, 0, 95, ServoLEye, 180, 165, ServoREye, 0, 15);
-  sweep4ServosBackward(ServoLArm, 135, 75, ServoRArm, 95, 0, ServoLEye, 165, 180, ServoREye, 15, 0);
-  sweep4ServosForward(ServoLArm, 75, 135, ServoRArm, 0, 95, ServoLEye, 180, 165, ServoREye, 0, 15);
-  sweep4ServosBackward(ServoLArm, 135, 75, ServoRArm, 95, 0, ServoLEye, 165, 180, ServoREye, 15, 0);
+  sweep4ServosForward(ServoLArm, 35, 100, ServoRArm, 135, 180, ServoLEye, 180, 165, ServoREye, 0, 15);
+  sweep4ServosBackward(ServoLArm, 100, 35, ServoRArm, 180, 135, ServoLEye, 165, 180, ServoREye, 15, 0);
 }
 
 
@@ -305,7 +301,7 @@ void loop() {
     data2 = data1[0];
   }
   switch (data2) {
-/*    case 'A':
+    case 'A':
            forward();
            break;
     case 'B':
@@ -320,7 +316,7 @@ void loop() {
     case 'E':
            stop();
            break;
-           */
+           
     case 'F':
            servoNeckTopRight();
            break;
