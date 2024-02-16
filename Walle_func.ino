@@ -51,7 +51,7 @@ void setup() {
 
   ServoNeckTopA.write(90); 
   ServoNeckMiddle.write(90); 
-  ServoNeckBottom.write(180); 
+  ServoNeckBottom.write(90); 
   ServoLArm.write(90); 
   ServoRArm.write(90); 
   ServoLEye.write(165); 
@@ -129,25 +129,25 @@ void servoNeckMiddleUp(){
   while(posNeckMiddle<160){
   posNeckMiddle = posNeckMiddle+1;
   ServoNeckMiddle.write(posNeckMiddle);
-  delay(100);
+  delay(25);
   }
 }
 void servoNeckMiddleDown(){
   while(posNeckMiddle>10){
   posNeckMiddle = posNeckMiddle-1;
   ServoNeckMiddle.write(posNeckMiddle);
-  delay(100);
+  delay(25);
   }
 }
 void servoNeckBottomUp(){
-  while(posNeckBottom<120){
+  while(posNeckBottom<110){
   posNeckBottom = posNeckBottom+5;
   ServoNeckBottom.write(posNeckBottom);
   delay(100);
   }
 }
 void servoNeckBottomDown(){
-  while(posNeckBottom>10){
+  while(posNeckBottom>60){
   posNeckBottom = posNeckBottom-5;
   ServoNeckBottom.write(posNeckBottom);
   delay(100);
@@ -186,7 +186,7 @@ void centre(){
   delay(10);
   ServoNeckMiddle.write(90); 
   delay(10);
-  ServoNeckBottom.write(180); 
+  ServoNeckBottom.write(90); 
   delay(10);
   ServoLArm.write(90); 
   delay(10);
@@ -339,7 +339,7 @@ void loop() {
     case 'K':
            servoNeckBottomDown();
            break;
-           /*
+           
     case 'L':
            motion1();
            break;
@@ -367,7 +367,7 @@ void loop() {
     case 'T':
           RArmUp();
           break;
-          */
+          
    /* case 'U':
           REyeUp();
           break;
